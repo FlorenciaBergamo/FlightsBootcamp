@@ -1,11 +1,15 @@
-package com.codoacodo.vuelosapi.models;
+package com.codoacodo.vuelosapi.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
-public class Dolar {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Dollar {
     private String moneda;
     private String casa;
     private String nombre;

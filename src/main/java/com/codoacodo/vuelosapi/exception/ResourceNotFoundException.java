@@ -1,4 +1,4 @@
-package com.codoacodo.vuelosapi.exceptions;
+package com.codoacodo.vuelosapi.exception;
 
 import lombok.Getter;
 import lombok.Setter;

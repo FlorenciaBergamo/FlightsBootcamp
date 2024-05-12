@@ -1,9 +1,9 @@
 package com.codoacodo.vuelosapi.controller;
 
-
-import com.codoacodo.vuelosapi.models.Dolar;
-import com.codoacodo.vuelosapi.models.Flight;
-import com.codoacodo.vuelosapi.services.FlightService;
+import com.codoacodo.vuelosapi.model.Dollar;
+import com.codoacodo.vuelosapi.model.Flight;
+import com.codoacodo.vuelosapi.model.FlightDto;
+import com.codoacodo.vuelosapi.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,15 +16,20 @@ public class FlightController {
     @Autowired
     FlightService flightService;
 
-    @GetMapping
-    public List<Flight> getAllFlights(){
-        return flightService.getAllFlights();
+//    @GetMapping("")
+//    public List<Flight> getAllFlights(){
+//        return flightService.getAllFlights();
+//    }
+
+    @GetMapping("")
+    public List<FlightDto> getAllFlights(){
+        return flightService.findAll();
     }
 
-//    @GetMapping("")
-//    public List<FlightDto> getAllFlights(){
-//        return flightService.findAll();
-//    }
+    @GetMapping("/holamundo")
+    public String holaMundo() {
+        return "Hola Mundo";
+    }
 
     @PostMapping("/add")
     public void addFlight(@RequestBody Flight flight){
@@ -64,10 +69,15 @@ public class FlightController {
 //        return flightService.getDolar();
 //    }
 
-    @GetMapping("/promedio")
-    public double getPromedio() {
-        return flightService.getDolar();
-    }
+//    @GetMapping("/promedio")
+//    public double getPromedio() {
+//        return flightService.getDolar();
+//    }
+
+//    @GetMapping("/allDollars")
+//    public List<Dollar> getAllDollars(){
+//        return flightService.getAllDollars();
+//    }
 
 }
 

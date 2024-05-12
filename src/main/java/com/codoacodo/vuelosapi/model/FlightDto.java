@@ -1,7 +1,9 @@
-package com.codoacodo.vuelosapi.models;
+package com.codoacodo.vuelosapi.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -9,9 +11,10 @@ public class FlightDto {
     private Long id;
     private String origen;
     private String destino;
-    private String fechaHoraSalida;
-    private String fechaHoraLlegada;
+    private LocalDateTime fechaHoraSalida;
+    private LocalDateTime fechaHoraLlegada;
     private double convertedPrice;
+    private String frecuencia;
 
 //    private Company company;
 

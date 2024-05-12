@@ -1,4 +1,4 @@
-package com.codoacodo.vuelosapi.models;
+package com.codoacodo.vuelosapi.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
