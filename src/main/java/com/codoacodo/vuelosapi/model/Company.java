@@ -1,2 +1,4 @@
-package com.codoacodo.vuelosapi.model;public class Company {
+package com.codoacodo.vuelosapi.model;
+
+public class Company {
 }
