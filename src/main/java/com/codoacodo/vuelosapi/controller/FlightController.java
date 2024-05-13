@@ -1,9 +1,8 @@
 package com.codoacodo.vuelosapi.controller;
 
-import com.codoacodo.vuelosapi.model.Dollar;
-import com.codoacodo.vuelosapi.model.Flight;
-import com.codoacodo.vuelosapi.model.FlightDto;
-import com.codoacodo.vuelosapi.service.FlightService;
+import com.codoacodo.vuelosapi.models.Flight;
+import com.codoacodo.vuelosapi.models.FlightDto;
+import com.codoacodo.vuelosapi.services.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,15 +30,15 @@ public class FlightController {
         return "Hola Mundo";
     }
 
-    @PostMapping("/add")
-    public void addFlight(@RequestBody Flight flight){
-        flightService.addFlight(flight);
-    }
-//
 //    @PostMapping("/add")
-//    public Flight createFlight(@RequestBody Flight flight, @RequestParam Long companyId){
-//        return flightService.createFlight(flight, companyId);
+//    public void addFlight(@RequestBody Flight flight){
+//        flightService.addFlight(flight);
 //    }
+//
+    @PostMapping("/add")
+    public Flight createFlight(@RequestBody Flight flight, @RequestParam Long companyId){
+        return flightService.createFlight(flight, companyId);
+    }
 //
 //    @GetMapping("/{id}")
 //    public Optional<Flight> findFlightById(@PathVariable Long id){

@@ -1,4 +1,4 @@
-package com.codoacodo.vuelosapi.model;
+package com.codoacodo.vuelosapi.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,8 +1,10 @@
-package com.codoacodo.vuelosapi.service;
+package com.codoacodo.vuelosapi.services;
 
 import com.codoacodo.vuelosapi.configuration.FlightConfiguration;
-import com.codoacodo.vuelosapi.model.Flight;
-import com.codoacodo.vuelosapi.model.FlightDto;
+import com.codoacodo.vuelosapi.models.Company;
+import com.codoacodo.vuelosapi.models.Flight;
+import com.codoacodo.vuelosapi.models.FlightDto;
+import com.codoacodo.vuelosapi.repository.CompanyRepository;
 import com.codoacodo.vuelosapi.repository.FlightRepository;
 import com.codoacodo.vuelosapi.utils.FlightUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,32 +23,9 @@ public class FlightService {
 
     @Autowired
     FlightConfiguration flightConfiguration;
+    @Autowired
+    CompanyRepository companyRepository;
 
-
-    //public List<FlightDto> findAll(){
-//    double price = getDollar();
-//    List<FlightDto> flightDtos = new ArrayList<>();
-//    List<Flight> flights = flightRepository.findAll();
-//    for(Flight f: flights){
-//    flightDtos.add(flightUtils.flightMapper(f, price));
-//    }
-//    return flightDtos;
-//}
-// ESTO ES IGUAL A LO DE ARRIBA, pero con STREAM:
-//    public List<FlightDto> findAll() {
-//        List<Flight> flightList = flightRepository.findAll();
-//        List<FlightDto> flightDtoList = flightList.stream()
-//                .map(flight -> flightUtils.flightMapper(flight, getDolar()))
-//                .collect(Collectors.toList());
-//        return flightDtoList;
-//    }
-//    ESTO ES IGUAL A LO DE ARRIBA, resumido:
-//    public List<FlightDto> findAll() {
-//        return flightRepository.findAll().stream()
-//                .map(flight -> flightUtils.flightMapper(flight,getDollar()))
-//                .collect(Collectors.toList());
-//    }
-    // ESTO ES IGUAL A LO DE ARRIBA, PERO LLAMANDO AL METODO DE UTILS.
     public List<FlightDto> findAll() {
         double price = getDollar();
         List<Flight> flights = flightRepository.findAll();
@@ -61,23 +40,14 @@ public class FlightService {
             flightRepository.save(flight);
         }
 
-  /*  @Autowired
-    CompanyRepository companyRepository;*/
 
-/*    public List<FlightDto> findAll() {
-        List<Flight> flightList = flightRepository.findAll();
-        return flightList.stream()
-                .map(flight -> flightUtils.flightMapper(flight,getDolar()))
-                .collect(Collectors.toList());
-    }*/
+    public Flight createFlight(Flight flight, Long companyId) {
+        Company company = companyRepository.findById(companyId)
+                .orElseThrow(() -> new IllegalArgumentException("Company not found"));
 
-//    public Flight createFlight(Flight flight, Long companyId) {
-//        Company company = companyRepository.findById(companyId)
-//                .orElseThrow(() -> new IllegalArgumentException("Company not found"));
-//
-//        flight.setCompany(company);
-//        return flightRepository.save(flight);
-//    }
+        flight.setCompany(company);
+        return flightRepository.save(flight);
+    }
 
 
 //    public Optional<Flight> findById(Long id) {
@@ -92,11 +62,6 @@ public class FlightService {
             flightRepository.save(flight);
             return flightRepository.findById(flight.getId()).orElse(null);
         }
-//    public Optional<Flight> update(Flight flight) {
-//        flightRepository.save(flight);
-//        return flightRepository.findById(flight.getId());
-//    }
-
 
         public double getDollar() {
             return flightConfiguration.fetchDollar().getPromedio();

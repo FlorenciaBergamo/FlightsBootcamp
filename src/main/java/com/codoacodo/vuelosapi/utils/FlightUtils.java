@@ -1,8 +1,8 @@
 
 package com.codoacodo.vuelosapi.utils;
 
-import com.codoacodo.vuelosapi.model.Flight;
-import com.codoacodo.vuelosapi.model.FlightDto;
+import com.codoacodo.vuelosapi.models.Flight;
+import com.codoacodo.vuelosapi.models.FlightDto;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

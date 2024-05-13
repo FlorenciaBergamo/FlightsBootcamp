@@ -1,4 +1,4 @@
-package com.codoacodo.vuelosapi.model;
+package com.codoacodo.vuelosapi.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -23,9 +23,9 @@ public class Flight {
    private LocalDateTime arrivingTime;
    private double price;
    private String frequency;
-//   @ManyToOne
-//   @JoinColumn(name = "company_id")
-//   private Company company;
+   @ManyToOne
+   @JoinColumn(name = "company_id")
+   private Company company;
 
    public Flight(String origin, String destiny, LocalDateTime departureTime, LocalDateTime arrivingTime, double price, String frequency) {
       this.origin = origin;
@@ -39,8 +39,8 @@ public class Flight {
 
 //{"origin": "Argentina",
 //"destiny": "Brasil",
-//        "departureTime": "2024-03-09T18:00:00",
-//        "arrivingTime": "2024-03-09T22:00:00",
-//        "price": 150,
-//"frecuency": "Semanal"
-//        }
+//"departureTime": "2024-03-09T18:00:00",
+//"arrivingTime": "2024-03-09T22:00:00",
+//"price": 150,
+//"frequency": "Semanal"
+//}
