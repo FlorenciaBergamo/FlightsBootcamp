@@ -33,10 +33,10 @@ public class CompanyController {
     public String deleteCompany(@PathVariable Long id){
         try {
             companyService.deleteCompany(id);
-            return "Compania eliminada";
+            return "Compañia eliminada";
         } catch (ResourceNotFoundException e) {
             e.printStackTrace();
-            return "No existe esa compania";
+            return "No existe esa compañia";
         }
     }
 
